@@ -25,7 +25,7 @@ class GenreViewSet(viewsets.ModelViewSet):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
     permission_classes = (AdminOrAuthenticatedReadOnly,)
-    http_method_names = ["get", "post", "put", "delete"]
+    http_method_names = ["get", "post"]
 
     def update(self, request, *args, **kwargs):
         raise NotFound()
@@ -41,7 +41,7 @@ class ActorViewSet(viewsets.ModelViewSet):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
     permission_classes = (AdminOrAuthenticatedReadOnly,)
-    http_method_names = ["get", "post", "put", "delete"]
+    http_method_names = ["get", "post"]
 
     def update(self, request, *args, **kwargs):
         raise NotFound()
@@ -57,7 +57,7 @@ class CinemaHallViewSet(viewsets.ModelViewSet):
     queryset = CinemaHall.objects.all()
     serializer_class = CinemaHallSerializer
     permission_classes = (AdminOrAuthenticatedReadOnly,)
-    http_method_names = ["get", "post", "put", "delete"]
+    http_method_names = ["get", "post"]
 
     def update(self, request, *args, **kwargs):
         raise NotFound()
@@ -73,7 +73,7 @@ class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.prefetch_related("genres", "actors")
     serializer_class = MovieSerializer
     permission_classes = (AdminOrAuthenticatedReadOnly,)
-    http_method_names = ["get", "post", "retrieve"]
+    http_method_names = ["get", "post"]
 
     @staticmethod
     def _params_to_ints(qs):
@@ -123,7 +123,7 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
     )
     serializer_class = MovieSessionSerializer
     permission_classes = (AdminOrAuthenticatedReadOnly,)
-    http_method_names = ["get", "post", "patch", "put", "delete"]
+    http_method_names = ["get", "post", "patch"]
 
     def get_queryset(self):
         date = self.request.query_params.get("date")
