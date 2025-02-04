@@ -7,4 +7,4 @@ class AdminOrAuthenticatedReadOnly(BasePermission):
             request.method in SAFE_METHODS
             and request.user
             and request.user.is_authenticated
-        ) or (request.user.is_staff and request.user)
+        ) or request.user.is_staff
